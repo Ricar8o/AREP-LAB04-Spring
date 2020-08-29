@@ -80,16 +80,6 @@ Si quiere ver como funciona la pagina de este repositorio de click al botón.
 o vaya a https://protected-sands-50592.herokuapp.com.
 
 
-## Documentación
-
-La documentacion se encuentra en la carpeta del repositorio llamada [docs](docs), pero en caso de que quiera generarla tiene las siguientes opciones.
-
-### Maven
-Para generar la documentacion con Maven puede ejecutar cualquiera de los siguientes comandos.
-
-*        mvn javadoc:javadoc
-*        mvn javadoc:jar
-
 ## Autor 
 
 Andrés Ricardo Martínez Díaz - [Ricar8o](https://github.com/Ricar8o)
