@@ -16,7 +16,7 @@ public class HttpServer {
     private URIProcessor up;
 
     public HttpServer() {
-
+        this.port = getPort();
     }
 
     public HttpServer(int port) {
@@ -25,8 +25,9 @@ public class HttpServer {
 
     public HttpServer(URIProcessor uri) {
         this.up = uri;
+        this.port = getPort();
     }
-
+    
     public void start() {
         try {
             ServerSocket serverSocket = null;
@@ -87,7 +88,6 @@ public class HttpServer {
         boolean notFound = true;
         if (request.get("requestLine") != null) {
             String[] requestLine = request.get("requestLine").split(" ");
-            System.out.println(requestLine[1].substring(0, 5));
             PrintWriter printWriter = new PrintWriter(out, true);
             if (requestLine[1].contains(".")) {
                 byte contenido[] = getResource(requestLine[1]);
@@ -102,12 +102,14 @@ public class HttpServer {
                 try {
                     URI uri = new URI(requestLine[1]);
                     if (uri.getPath().startsWith("/Apps")){
-                        System.out.println("HOLAAA " + uri.getPath().substring(5));
+                        // System.out.println("HOLAAA " + uri.getPath().substring(5));
                         getAppResponse(uri.getPath().substring(5), printWriter);
                         notFound = false;
                     }
                 } catch (URISyntaxException e) {
                     Logger.getLogger(HttpServer.class.getName()).log(Level.SEVERE, null, e);
+                } catch (NullPointerException e){
+                    notFound = true;
                 }
                 
             }
@@ -174,5 +176,18 @@ public class HttpServer {
 
         out.println(header + response);
 
+    }
+    /**
+     * This method reads the default port as specified by the PORT variable in the
+     * environment.
+     *
+     * Heroku provides the port automatically so you need this to run the project on
+     * Heroku.
+     */
+    static int getPort() {
+        if (System.getenv("PORT") != null) {
+        return Integer.parseInt(System.getenv("PORT"));
+        }
+        return 36000; //returns default port if heroku-port isn't set (i.e. on localhost)
     }
 }

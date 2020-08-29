@@ -1,0 +1,1 @@
+web: java $JAVA_OPTS -cp target/classes co.edu.escuelaing.arep.microspring.MicroSpringBoot co.edu.escuelaing.arep.microspring.componenttest.HelloController
