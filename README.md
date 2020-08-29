@@ -79,6 +79,9 @@ Si quiere ver como funciona la pagina de este repositorio de click al botón.
 
 o vaya a https://protected-sands-50592.herokuapp.com.
 
+### Advertencia
+El sitio de heroku se cae seguido debido al poco tiempo de la implementación, lo mejor es que lo pruebe de manera local.
+
 
 ## Autor 
 
